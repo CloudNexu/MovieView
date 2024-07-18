@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieView</title>
+    <script src="main.js" defer></script>
+    <script src="movie.js" defer></script>
+    <link rel="stylesheet" href="layout.css">
+</head>
+<body>
+    <div id="myModal" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="movieTitle"></h2>
+            <div id="movieInfo"></div>
+            <div id="posterContainer"></div>
+            <button onclick="like()">Mag ich</button>
+            <button onclick="dislike()">Mag ich nicht</button>
+            <button onclick="unknown()">Abbrechen</button>
+        </div>
+    </div>
+    <div class="search-container">
+        <label for="filmname">Filmtitel</label>
+        <input id="filmname" type="text" class="search-box">
+        <button onclick="search()" class="search-button">Suchen</button>
+    </div>
+    <table class="table-good-movies movie-table">
+        <caption>Mag ich</caption>
+        <thead>
+            <tr>
+                <th>Titel</th>
+                <th>Jahr</th>
+                <th>Genre</th>
+                <th>Regisseur</th>
+                <th>Schauspieler</th>
+            </tr>
+        </thead>
+        <tbody id="goodMoviesTableBody">
+            <!-- Hier kommen die guten Filme hin -->
+        </tbody>
+    </table>
+    <table class="table-bad-movies movie-table">
+        <caption>Mag ich nicht</caption>
+        <thead>
+            <tr>
+                <th>Titel</th>
+                <th>Jahr</th>
+                <th>Genre</th>
+                <th>Regisseur</th>
+                <th>Schauspieler</th>
+            </tr>
+        </thead>
+        <tbody id="badMoviesTableBody">
+            <!-- Hier kommen die schlechten Filme hin -->
+        </tbody>
+    </table>
+</body>
+</html>
