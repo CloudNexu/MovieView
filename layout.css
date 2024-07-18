@@ -122,8 +122,8 @@ body {
 
 .popup-content img {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 5px;
+    right: 10px;
     max-width: 150px;
     max-height: 150px;
     border: 1px solid #888;
