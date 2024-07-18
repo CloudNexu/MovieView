@@ -85,15 +85,42 @@ function closeModal() {
 function addToFavoritesTable(movie) {
     var tableBody = document.getElementById('goodMoviesTableBody');
     var newRow = tableBody.insertRow();
-    newRow.innerHTML = `<td>${movie.title}</td><td>${movie.year}</td><td>${movie.genre}</td><td>${movie.director}</td><td>${movie.actors}</td>`;
+    newRow.innerHTML = `<td>${movie.title}</td><td>${movie.year}</td><td>${movie.genre}</td><td>${movie.director}</td><td>${movie.actors}</td><td><button onclick="removeFromTable(this, 'like')">X</button></td>`;
 }
 
 function addToDislikesTable(movie) {
     var tableBody = document.getElementById('badMoviesTableBody');
     var newRow = tableBody.insertRow();
-    newRow.innerHTML = `<td>${movie.title}</td><td>${movie.year}</td><td>${movie.genre}</td><td>${movie.director}</td><td>${movie.actors}</td>`;
+    newRow.innerHTML = `<td>${movie.title}</td><td>${movie.year}</td><td>${movie.genre}</td><td>${movie.director}</td><td>${movie.actors}</td><td><button onclick="removeFromTable(this, 'dislike')">X</button></td>`;
+}
+
+function removeFromTable(button, type) {
+    var row = button.parentNode.parentNode;
+    var title = row.cells[0].innerText;
+
+    if (type === 'like') {
+        likedMovies = likedMovies.filter(movie => movie.title !== title);
+    } else if (type === 'dislike') {
+        dislikedMovies = dislikedMovies.filter(movie => movie.title !== title);
+    }
+
+    row.parentNode.removeChild(row);
 }
 
 function isDuplicateMovie(movie, list) {
     return list.some(m => m.title === movie.title);
+}
+
+class Movie {
+    constructor(data) {
+        this.title = data.Title;
+        this.year = data.Year;
+        this.genre = data.Genre;
+        this.director = data.Director;
+        this.actors = data.Actors;
+        this.poster = data.Poster;
+        this.plot = data.Plot;
+        this.rated = data.Rated;
+        this.runtime = data.Runtime;
+    }
 }
